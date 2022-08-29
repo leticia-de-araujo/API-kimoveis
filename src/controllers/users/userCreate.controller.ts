@@ -18,7 +18,7 @@ const userCreateController = async (req: Request, res: Response) => {
     return res.status(201).json(instanceToPlain(newUser));
   } catch (error) {
     if (error instanceof AppError) {
-      throw new AppError(error.message);
+      throw new AppError(error.message, error.statusCode);
     }
   }
 };

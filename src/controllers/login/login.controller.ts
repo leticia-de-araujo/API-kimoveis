@@ -12,7 +12,7 @@ const loginController = async (req: Request, res: Response) => {
     return res.status(200).send({ token });
   } catch (error) {
     if (error instanceof AppError) {
-      throw new AppError(error.message);
+      throw new AppError(error.message, error.statusCode);
     }
   }
 };

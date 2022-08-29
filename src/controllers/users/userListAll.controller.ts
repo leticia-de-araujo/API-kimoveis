@@ -10,7 +10,7 @@ const userListAllController = async (req: Request, res: Response) => {
     return res.status(200).json(instanceToPlain(users));
   } catch (error) {
     if (error instanceof AppError) {
-      throw new AppError(error.message);
+      throw new AppError(error.message, error.statusCode);
     }
   }
 };
