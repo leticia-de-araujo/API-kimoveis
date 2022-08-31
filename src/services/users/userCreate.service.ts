@@ -14,12 +14,12 @@ const userCreateService = async ({
 
   const hashedPassword = await hash(password, 10);
 
-  const users = await userRepository.find()
+  const users = await userRepository.find();
 
-  const userAlreadyExists = users.find((user) => user.email === email)
+  const userAlreadyExists = users.find((user) => user.email === email);
 
   if (userAlreadyExists) {
-    throw new AppError("User already exists", 400);
+    throw new AppError('User already exists', 400);
   }
 
   const user = userRepository.create({

@@ -8,7 +8,7 @@ const userSoftDeleteController = async (req: Request, res: Response) => {
 
     await userSoftDeleteService(idParams);
 
-    return res.status(204);
+    return res.status(204).send();
   } catch (error) {
     if (error instanceof AppError) {
       throw new AppError(error.message, error.statusCode);

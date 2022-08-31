@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken"
 import 'dotenv/config'
 
 const authorizationMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+
+    
     let token = req.headers.authorization
 
     if (!token) {
@@ -25,7 +27,7 @@ const authorizationMiddleware = async (req: Request, res: Response, next: NextFu
             isAdm: decoded.isAdm, 
             id: decoded.sub
         }
-
+        console.log("authorization middleware")
         next()
     })
 };

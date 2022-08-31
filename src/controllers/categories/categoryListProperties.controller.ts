@@ -9,11 +9,16 @@ const categoryListPropertiesController = async (
   try {
     const categoryId = req.params.id;
 
+    console.log(categoryId)
+
     const categoryProperties = await categoryListPropertiesService(categoryId);
+
+    console.log("try controller")
 
     return res.status(200).json(categoryProperties);
   } catch (error) {
     if (error instanceof AppError) {
+      console.log("catch controller")
       throw new AppError(error.message, error.statusCode);
     }
   }

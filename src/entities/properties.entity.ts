@@ -32,11 +32,13 @@ export class Properties {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(() => Addresses, (address) => address.id)
+  @OneToOne(() => Addresses, (address) => address.id, { eager: true })
   @JoinColumn()
   address: Addresses;
 
-  @ManyToOne(() => Categories, (category) => category.id)
+  @ManyToOne(() => Categories, (category) => category.properties, {
+    eager: true,
+  })
   category: Categories;
 
   constructor() {
