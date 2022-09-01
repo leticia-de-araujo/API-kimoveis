@@ -11,8 +11,6 @@ const isAdmMiddleware = async (
   if (isAdm === false) {
     throw new AppError('User is not admin.', 403);
   }
-  
-  console.log("isAdm middleware")
 
   next();
 };

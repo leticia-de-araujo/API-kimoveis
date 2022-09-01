@@ -7,10 +7,12 @@ import {
   OneToOne,
   JoinColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Addresses } from './addresses.entity';
 import { Categories } from './categories.entity';
+import { Schedules } from './schedules.entity';
 
 @Entity()
 export class Properties {
@@ -40,6 +42,9 @@ export class Properties {
     eager: true,
   })
   category: Categories;
+
+  @OneToMany(() => Schedules, (schedules) => schedules.property)
+  schedules: Schedules[];
 
   constructor() {
     if (!this.id) {
